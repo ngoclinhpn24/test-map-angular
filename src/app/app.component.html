@@ -2,9 +2,20 @@
 
 <h1 style="text-align: center;">{{title}}</h1>
 
-<agm-map [latitude]="lat" [longitude]="lng" (mapClick) = "onChoseLocation($event)" >
-  <!-- đánh dấu vị trí -->
-  <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
-</agm-map>
+<div class="container">
+  <agm-map [latitude]="lat" [longitude]="lng" (mapClick) = "onChoseLocation($event)" [zoom] ="zoom">
+    <!-- đánh dấu vị trí -->
+    <agm-marker [latitude]="lat" [longitude]="lng" [markerDraggable]="true"></agm-marker>
+
+    <agm-marker [latitude]="lat2" [longitude]="lng2" [markerDraggable]="true"></agm-marker>
+
+    <!-- <agm-marker *ngFor="let marker of markers" 
+        [latitude]="marker.lat"  [longitude]="marker.lng">    
+          <agm-info-window #infoWindow> {{ marker.label }}
+          </agm-info-window>
+    </agm-marker> -->
+  </agm-map>
+</div>
+
 
 
