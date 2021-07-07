@@ -6,5 +6,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'test-map';
+  title = 'My first AGM project';
+  lat = 51.678418;
+  lng = 7.809007;
+
+  onChoseLocation(event: any){
+    console.log(event);
+    // this.lat = event.coords.lat;
+    // this.lng = event.coords.lng;
+  }
 }
