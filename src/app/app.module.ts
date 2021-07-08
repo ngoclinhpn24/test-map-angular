@@ -16,8 +16,12 @@ import { AgmCoreModule } from '@agm/core';
     AppRoutingModule,
     
     AgmCoreModule.forRoot({
+<<<<<<< HEAD
       apiKey: 'AIzaSyA2zmfFiqBqvwBMOqEGlEzWqmSRAPaX3kM'
       //apiKey: ''
+=======
+      apiKey: 'AIzaSyAjBb_K8pc_2tww1EYFw7Owooo11co06fs'
+>>>>>>> 9a21bbab15902db54298ee7c091a9eb4c36d286c
     })
   ],
   providers: [],
