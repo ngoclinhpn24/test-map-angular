@@ -16,7 +16,8 @@ import { AgmCoreModule } from '@agm/core';
     AppRoutingModule,
     
     AgmCoreModule.forRoot({
-      apiKey: 'KEY-GOOGLE-API'
+      apiKey: 'AIzaSyA2zmfFiqBqvwBMOqEGlEzWqmSRAPaX3kM'
+      //apiKey: ''
     })
   ],
   providers: [],

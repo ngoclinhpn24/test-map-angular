@@ -7,13 +7,13 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'My first AGM project';
-  lat = 9.8372633;
-  lng = 105.5193633;
+  lat = 22.4064172;
+  lng = 69.0750171;
 
   zoom = 9;
-  
-  lat2 = 9.8368873;
-  lng2 = 105.5169083;
+
+  lat2 = 10.0590593;
+  lng2 = 105.7104243;
 
   onChoseLocation(event: any){
     console.log(event);
