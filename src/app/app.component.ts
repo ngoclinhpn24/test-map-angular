@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -12,28 +13,37 @@ export class AppComponent {
 
   zoom = 9;
 
-  lat2 = 10.0590593;
-  lng2 = 105.7104243;
+  // lat2 = 10.0590593;
+  // lng2 = 105.7104243;
 
+  public marker:any;
+  postData:any;
+
+  //url = 'http://localhost:3000/data';
   onChoseLocation(event: any){
     console.log(event);
     // this.lat = event.coords.lat;
     // this.lng = event.coords.lng;
   }
 
-  markers = [
-    {
-      lat: 21.1594627,
-      lng: 72.6822083,
-      label: 'Surat' },
-    
-    { 
-      lat: 23.0204978,
-      lng: 72.4396548,
-      label: 'Ahmedabad'},
+  constructor(private http: HttpClient){
+    //   this.http.post(this.url,this.postData).toPromise().then((data) => {
+    //     console.log(data); 
+    // });
 
-    {
-      lat: 22.2736308,
-      lng: 70.7512555,
-      label: 'Rajkot'}  ];
+  }
+  ngOnInit(): void {
+      //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
+      //Add 'implements OnInit' to the class.
+      this.http.get('/assets/api/place.json').subscribe((data) => {
+        this.marker = data; // hiển thị ra màn hình
+      });
+
+      // this.http.get(this.url).subscribe((data) => {
+      //     console.log(data);
+      //     this.marker = data;
+      // });
+  }
+  
+  
 }
