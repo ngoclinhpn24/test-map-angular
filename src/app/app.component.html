@@ -16,11 +16,33 @@
     </agm-marker> -->
   </agm-map>
 
-  <ul *ngFor = "let data of marker">
-    <li> Label: {{data.label}} Lat: {{data.lat}} Lng: {{data.lng}}</li>
-  </ul>
+  <br>
+  <br>
+  <!-- <ul *ngFor = "let data of marker">
+    <li> Address: {{data.address}} Lat: {{data.lat}} Lng: {{data.lng}} Radius: {{data.radius}}</li>
+  </ul> -->
 
-  <!-- <pre>{{marker}}</pre> -->
+  <table>
+    <thead>
+       <th>Address</th>
+       <th>Lat</th>
+       <th>Lng</th>
+       <th>Radius</th>
+    </thead>
+
+    <tbody>
+       <tr *ngFor="let data of marker">
+          <td>{{data.address}}</td>
+          <td>{{data.lat}}</td>
+          <td>{{data.lng}}</td>
+          <td>{{data.radius}}</td>
+       </tr>
+    </tbody>
+ </table>
+
+  <br>
+  <br>
+  <!-- <div>Address: {{postData.address}} </div> -->
 </div>
 
 
