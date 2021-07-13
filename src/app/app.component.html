@@ -2,26 +2,49 @@
 
 <h1 style="text-align: center;">{{title}}</h1>
 
-<div class="container">
-  <agm-map [latitude]="lat" [longitude]="lng" (mapClick) = "onChoseLocation($event)" [zoom] ="zoom">
+<div id="map"></div>
+<!-- <agm-map [latitude]="lat" [longitude]="lng" (mapClick) = "onChoseLocation($event)" [zoom] ="zoom"></agm-map> -->
+<div class="container" >
+  <agm-map [latitude]="lat" [longitude]="lng" [zoom] ="zoom">
     <!-- đánh dấu vị trí -->
     <agm-marker [latitude]="lat" [longitude]="lng" [markerDraggable]="true"></agm-marker>
 
     <!-- <agm-marker [latitude]="lat2" [longitude]="lng2" [markerDraggable]="true"></agm-marker> -->
 
-    <!-- <agm-marker *ngFor="let marker of markers" 
-        [latitude]="marker.lat"  [longitude]="marker.lng">    
-          <agm-info-window #infoWindow> {{ marker.label }}
-          </agm-info-window>
-    </agm-marker> -->
+    <agm-marker *ngFor="let data of marker" 
+       [latitude]="data.lat"  [longitude]="data.lng">    
+          <!-- <agm-info-window #infoWindow> {{ marker.label }}
+          </agm-info-window> -->
+
+    </agm-marker>
+
+    <!-- <agm-circle *ngFor="let data of marker"
+              [latitude]="data.lat"
+              [longitude]="data.lng"
+              [circleDraggable]="true"
+              [editable]="true"
+              [fillColor]="data.color"
+              [radius]="data.radius">
+  </agm-circle> -->
+
   </agm-map>
 
   <br>
-  <br>
+
+    <div>Latitude: {{lat}}</div>
+    <div>Longitude: {{lng}}</div>
+
+
+  
   <!-- <ul *ngFor = "let data of marker">
     <li> Address: {{data.address}} Lat: {{data.lat}} Lng: {{data.lng}} Radius: {{data.radius}}</li>
   </ul> -->
 
+  
+  <!-- <div>Address: {{postData.address}} </div> -->
+</div>
+
+<div class="tableData">
   <table>
     <thead>
        <th>Address</th>
@@ -40,10 +63,8 @@
     </tbody>
  </table>
 
-  <br>
-  <br>
-  <!-- <div>Address: {{postData.address}} </div> -->
 </div>
+
 
 
 
