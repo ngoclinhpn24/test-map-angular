@@ -9,25 +9,45 @@ import { HttpClient } from '@angular/common/http';
 })
 
 
-// interface City {
-//   center: google.maps.LatLngLiteral;
-//   radius: number;
+// interface Location {
+//   // center: google.maps.LatLngLiteral;
+//   // radius: number;
+//   lat: string;
+//   lng: string;
 // }
+
+
 
 export class AppComponent implements OnInit {
   title = 'My first AGM project';
-  lat = 21.027763;
-  lng = 105.834160;
-  zoom = 9;
+
+    lat = 21.027763;
+    lng = 105.834160;
+    zoom = 9;
+
+    // lat1: string = '';
+    // lng1: string = '';
+   
+
+  lat1: any;
+  lng1: any;
+  
+
+  // Radius
+  radius: any;
+  radiusLat = 0;
+  radiusLong = 0;
 
   // lat2 = 10.0590593;
   // lng2 = 105.7104243;
 
   public marker:any;
   
-  //parsedJson: any;
+  parsedJson: any;
   postData: any;
   stringifyJson: any;
+  
+  
 
   url = 'http://localhost:3000/data';
   onChoseLocation(event: any){
@@ -42,6 +62,7 @@ export class AppComponent implements OnInit {
     // });
 
   }
+
   ngOnInit(): void {
       
       // this.http.get('/assets/api/place.json').subscribe((data) => {
@@ -63,6 +84,13 @@ export class AppComponent implements OnInit {
         console.log(data);
         this.marker = data; // hiện ra màn hình
 
+       
+        // this.lat1 = this.marker.lat;
+        // console.log(this.lat1);
+        // this.lng1 = this.marker.lng;
+        // this.radius = this.marker.radius;
+        // this.radiusLat = this.lat1;
+        // this.radiusLong = this.lng1;
         
 
         // Convert to JSON
@@ -75,29 +103,32 @@ export class AppComponent implements OnInit {
         var parsedJson = JSON.parse(this.stringifyJson);  
         console.log("Parse JSON: " , parsedJson);  
 
+       
+
         var locat = parsedJson[0];
         console.log("Location1: ", locat);
         console.log("Address: ", locat.address);
         // this.parsedJson = JSON.parse(this.stringifyJson);  
-        //  console.log("With Parsed JSON :" , this.parsedJson);  
+        //  console.log("Parsed JSON :" , this.parsedJson);  
 
-        var map = new google.maps.Map(
-          document.getElementById("map") as HTMLElement,
-          {
-            zoom: 4,
-            center: { lat: 21.027763, lng: 105.834160 },
-            mapTypeId: "terrain",
-          }
-        );
 
-        const circle = new google.maps.Circle({
-          map: map,
-          center: new google.maps.LatLng(21.027763, 105.83416),
-          radius: 8000
 
-        }
+        // var map = new google.maps.Map(
+        //   document.getElementById("map") as HTMLElement,
+        //   {
+        //     zoom: 4,
+        //     center: { lat: 21.027763, lng: 105.834160 },
+        //     mapTypeId: "terrain",
+        //   }
+        // );
+
+        // const circle = new google.maps.Circle({
+        //   map: map,
+        //   center: new google.maps.LatLng(21.027763, 105.83416),
+        //   radius: 8000
+        // }
         
-        );
+        // );
         // for (const city in this.marker) {
         //   // Add the circle for this city to the map.
         //   const cityCircle = new google.maps.Circle({

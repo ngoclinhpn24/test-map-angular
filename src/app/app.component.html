@@ -2,10 +2,12 @@
 
 <h1 style="text-align: center;">{{title}}</h1>
 
-<div id="map"></div>
+
 <!-- <agm-map [latitude]="lat" [longitude]="lng" (mapClick) = "onChoseLocation($event)" [zoom] ="zoom"></agm-map> -->
 <div class="container" >
-  <agm-map [latitude]="lat" [longitude]="lng" [zoom] ="zoom">
+
+  <!-- <agm-map [latitude]="lat" [longitude]="lng" [zoom] ="zoom"> -->
+  <agm-map [latitude]="lat" [longitude]="lng" [zoom] ="zoom" >
     <!-- đánh dấu vị trí -->
     <agm-marker [latitude]="lat" [longitude]="lng" [markerDraggable]="true"></agm-marker>
 
@@ -13,26 +15,36 @@
 
     <agm-marker *ngFor="let data of marker" 
        [latitude]="data.lat"  [longitude]="data.lng">    
-          <!-- <agm-info-window #infoWindow> {{ marker.label }}
-          </agm-info-window> -->
-
+           <agm-info-window #infoWindow> {{ data.address}}
+          </agm-info-window> 
     </agm-marker>
 
-    <!-- <agm-circle *ngFor="let data of marker"
-              [latitude]="data.lat"
-              [longitude]="data.lng"
-              [circleDraggable]="true"
-              [editable]="true"
-              [fillColor]="data.color"
-              [radius]="data.radius">
-  </agm-circle> -->
+    <agm-circle *ngFor="let data of marker" 
+              [latitude] = "data.lat"
+              [longitude] = "data.lng"
+              [radius] = "data.radius"
+              [circleDraggable] = "true"
+              [editable] = "true"
+              [fillColor] = "'red'">
+    </agm-circle>
+
+  <agm-circle 
+              [latitude] = "20.453951"
+              [longitude] = "106.347054"
+              [circleDraggable] = "true"
+              [editable] = "true"
+              [radius] = "10000"
+              [fillColor] = "'red'">
+  </agm-circle>
+
+  
 
   </agm-map>
 
-  <br>
+  <!-- <br>
 
     <div>Latitude: {{lat}}</div>
-    <div>Longitude: {{lng}}</div>
+    <div>Longitude: {{lng}}</div> -->
 
 
   
