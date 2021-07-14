@@ -9,32 +9,17 @@ import { HttpClient } from '@angular/common/http';
 })
 
 
-// interface Location {
-//   // center: google.maps.LatLngLiteral;
-//   // radius: number;
-//   lat: string;
-//   lng: string;
-// }
-
-
 
 export class AppComponent implements OnInit {
   title = 'My first AGM project';
 
-    lat = 21.027763;
-    lng = 105.834160;
-    zoom = 8;
-
-
-  // Radius
-  radius: any;
-  radiusLat = 0;
-  radiusLong = 0;
-
-  
+  lat = 21.027763;
+  lng = 105.834160;
+  zoom = 8;
 
   public marker:any;
   
+
   parsedJson: any;
   postData: any;
   stringifyJson: any;
@@ -70,22 +55,34 @@ export class AppComponent implements OnInit {
 
 
       // HTTP get Request
-      this.http.get(this.url).subscribe((data) => {
+      this.http.get(this.url).subscribe((data: Object|any) => {
 
         // Object data
         console.log(data);
         this.marker = data; // lấy dữ liệu hiện ra màn hình
 
-        
-        console.log(parseFloat('1.12321423'));
-       
-        // this.lat1 = this.marker.lat;
-        // console.log(this.lat1);
-        // this.lng1 = this.marker.lng;
-        // this.radius = this.marker.radius;
-        // this.radiusLat = this.lat1;
-        // this.radiusLong = this.lng1;
-        
+        // convert lat, lng, radius sang number
+        // let temp: Object[]|any
+        // temp = data
+        // this.marker = temp.map((location:any, index: any), thi tren 58. subcribe((data))
+
+        this.marker = data.map((location:any) => {
+            var lat: number = +location.lat; // dùng parseFloat(location.lat) cũng được
+            var lng: number = +location.lng;
+            var radius: number = +location.radius;
+
+            // console.log({
+            //   lat: lat,
+            //   lng: lng,
+            //   radius: radius
+            // })
+            return{
+              lat: lat,
+              lng: lng,
+              radius: radius
+            }
+        });
+        console.log("Lat Lng Radius: number: ", this.marker)
 
         // Convert to JSON
 
@@ -107,35 +104,7 @@ export class AppComponent implements OnInit {
 
 
 
-        // var map = new google.maps.Map(
-        //   document.getElementById("map") as HTMLElement,
-        //   {
-        //     zoom: 4,
-        //     center: { lat: 21.027763, lng: 105.834160 },
-        //     mapTypeId: "terrain",
-        //   }
-        // );
-
-        // const circle = new google.maps.Circle({
-        //   map: map,
-        //   center: new google.maps.LatLng(21.027763, 105.83416),
-        //   radius: 8000
-        // }
-        
-        // );
-        // for (const city in this.marker) {
-        //   // Add the circle for this city to the map.
-        //   const cityCircle = new google.maps.Circle({
-        //     strokeColor: "#FF0000",
-        //     strokeOpacity: 0.8,
-        //     strokeWeight: 2,
-        //     fillColor: "#FF0000",
-        //     fillOpacity: 0.35,
-        //     map,
-        //     center: this.marker[city].center,
-        //     radius: this.marker[city].radius
-        //   });
-        // }
+       
 
 
     });
