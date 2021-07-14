@@ -82,8 +82,8 @@ export class AppComponent implements OnInit {
 
         // Object data
         console.log(data);
-        this.marker = data; // hiện ra màn hình
-
+        this.marker = data; // lấy dữ liệu hiện ra màn hình
+        
        
         // this.lat1 = this.marker.lat;
         // console.log(this.lat1);
