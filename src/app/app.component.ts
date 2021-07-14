@@ -23,23 +23,15 @@ export class AppComponent implements OnInit {
 
     lat = 21.027763;
     lng = 105.834160;
-    zoom = 9;
+    zoom = 8;
 
-    // lat1: string = '';
-    // lng1: string = '';
-   
-
-  lat1: any;
-  lng1: any;
-  
 
   // Radius
   radius: any;
   radiusLat = 0;
   radiusLong = 0;
 
-  // lat2 = 10.0590593;
-  // lng2 = 105.7104243;
+  
 
   public marker:any;
   
@@ -83,7 +75,9 @@ export class AppComponent implements OnInit {
         // Object data
         console.log(data);
         this.marker = data; // lấy dữ liệu hiện ra màn hình
+
         
+        console.log(parseFloat('1.12321423'));
        
         // this.lat1 = this.marker.lat;
         // console.log(this.lat1);
