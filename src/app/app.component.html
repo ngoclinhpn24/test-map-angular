@@ -15,7 +15,12 @@
 
     <agm-marker *ngFor="let data of marker" 
        [latitude]="data.lat"  [longitude]="data.lng">    
-           <agm-info-window #infoWindow> {{ data.address}}
+           <agm-info-window #infoWindow> 
+              <!-- {{ data.address }} -->
+              <div class="window-title">
+               {{data.address}}
+  
+              </div>
           </agm-info-window> 
     </agm-marker>
 

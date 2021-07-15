@@ -15,7 +15,7 @@ export class AppComponent implements OnInit {
 
   lat = 21.027763;
   lng = 105.834160;
-  zoom = 8;
+  zoom = 10;
 
   public marker:any;
   
@@ -55,18 +55,20 @@ export class AppComponent implements OnInit {
 
 
       // HTTP get Request
-      this.http.get(this.url).subscribe((data: Object|any) => {
+      this.http.get(this.url).subscribe((data) => {
 
         // Object data
         console.log(data);
         this.marker = data; // lấy dữ liệu hiện ra màn hình
 
         // convert lat, lng, radius sang number
-        // let temp: Object[]|any
-        // temp = data
-        // this.marker = temp.map((location:any, index: any), thi tren 58. subcribe((data))
+        let temp: Object[]|any
+        temp = data
+        //this.marker = temp.map((location:any, index: any), thi tren 58. subcribe((data))
 
-        this.marker = data.map((location:any) => {
+        this.marker = temp.map((location:any) => {
+             
+            var address = location.address;
             var lat: number = +location.lat; // dùng parseFloat(location.lat) cũng được
             var lng: number = +location.lng;
             var radius: number = +location.radius;
@@ -77,6 +79,7 @@ export class AppComponent implements OnInit {
             //   radius: radius
             // })
             return{
+              address,
               lat: lat,
               lng: lng,
               radius: radius
@@ -95,21 +98,14 @@ export class AppComponent implements OnInit {
         console.log("Parse JSON: " , parsedJson);  
 
        
-
         var locat = parsedJson[0];
         console.log("Location1: ", locat);
         console.log("Address: ", locat.address);
         // this.parsedJson = JSON.parse(this.stringifyJson);  
         //  console.log("Parsed JSON :" , this.parsedJson);  
 
-
-
-       
-
-
     });
 
   }
-  
   
 }
