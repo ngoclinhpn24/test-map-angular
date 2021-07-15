@@ -13,4 +13,37 @@ table, th, td {
 
 th, td {
     padding: 15px;
-  }
+}
+
+.infoWindow{
+    width: 270px;
+    margin : 0 auto;
+} 
+  
+ /* form {
+    background: white;
+    width: 250px; 
+    color: rgb(94, 93, 93);
+    border-radius: 5px;
+    box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.7); 
+ } */
+  
+ form label {
+    margin-left: 10px;
+    display: inline-block;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    position: relative;
+ }
+  
+ 
+input {
+    display: block;
+    width: 85%;
+    height: 21px;
+    margin-left: 10px;
+    padding: 5px 10px;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+    outline-color: rgb(172, 172, 172);
+ }

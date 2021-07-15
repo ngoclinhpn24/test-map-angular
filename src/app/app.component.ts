@@ -15,10 +15,10 @@ export class AppComponent implements OnInit {
 
   lat = 21.027763;
   lng = 105.834160;
-  zoom = 10;
+  zoom = 9;
 
   public marker:any;
-  
+  circle:any;
 
   parsedJson: any;
   postData: any;
@@ -66,12 +66,13 @@ export class AppComponent implements OnInit {
         temp = data
         //this.marker = temp.map((location:any, index: any), thi tren 58. subcribe((data))
 
-        this.marker = temp.map((location:any) => {
+        this.circle = temp.map((location:any) => {
              
-            var address = location.address;
+            //var address = location.address;
             var lat: number = +location.lat; // dùng parseFloat(location.lat) cũng được
             var lng: number = +location.lng;
             var radius: number = +location.radius;
+            
 
             // console.log({
             //   lat: lat,
@@ -79,13 +80,13 @@ export class AppComponent implements OnInit {
             //   radius: radius
             // })
             return{
-              address,
+              //address,
               lat: lat,
               lng: lng,
               radius: radius
             }
         });
-        console.log("Lat Lng Radius: number: ", this.marker)
+        console.log("Lat Lng Radius: number: ", this.circle)
 
         // Convert to JSON
 
