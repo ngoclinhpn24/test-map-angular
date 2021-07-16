@@ -1,9 +1,9 @@
 .container, .tableData{
-    padding: 30px;
+    padding: 20px;
     
 }
 agm-map{
-    height: 400px;
+    height: 500px;
 }
 
 table, th, td {
@@ -20,30 +20,54 @@ th, td {
     margin : 0 auto;
 } 
   
- /* form {
-    background: white;
-    width: 250px; 
-    color: rgb(94, 93, 93);
-    border-radius: 5px;
-    box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.7); 
- } */
+ form {
+    margin: 3px;
+    position: relative;
+    /* background: #F4F4F2;#faf8f8, f1f3f3  */
+    background: #f1f1f1;
+    width: 261px; 
+    color: #333;
+    border-radius: 10px;
+    border: 0.5px solid #ccc;
+    /* box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.7);  */
+ }
   
+header {
+    /* background: #1E6F5C; */
+    background: #1E6F5C;
+    padding: 20px 20px; 
+    color: white; 
+    /* color: black; */
+    text-align: center;
+    font-size: 1.6em;
+    font-weight: 500; 
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    border-radius: 10px 10px 0 0;
+ }
+
  form label {
-    margin-left: 10px;
     display: inline-block;
+    margin-left: 10px;
     margin-top: 10px;
     margin-bottom: 5px;
     position: relative;
+    /* font-weight: bold; */
  }
   
  
-input {
+form input {
     display: block;
     width: 85%;
     height: 21px;
+    font-size: small;
+    margin-top: 5px;
     margin-left: 10px;
     padding: 5px 10px;
     border-radius: 3px;
     border: 1px solid #ccc;
-    outline-color: rgb(172, 172, 172);
+    outline-color: #289672;
  }
+
+ /* form input:hover {
+    background: #b6b5b8;
+ } */

@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 
 import { AgmCoreModule } from '@agm/core';
 import {HttpClientModule} from '@angular/common/http';
-
+import { AgmSnazzyInfoWindowModule } from '@agm/snazzy-info-window';
 
 @NgModule({
   declarations: [
@@ -20,7 +20,8 @@ import {HttpClientModule} from '@angular/common/http';
       apiKey: 'AIzaSyA2zmfFiqBqvwBMOqEGlEzWqmSRAPaX3kM'
       //apiKey: ''
     }),
-    HttpClientModule
+    HttpClientModule,
+    AgmSnazzyInfoWindowModule
   ],
   providers: [],
   bootstrap: [AppComponent]

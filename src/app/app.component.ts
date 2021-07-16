@@ -13,12 +13,16 @@ import { HttpClient } from '@angular/common/http';
 export class AppComponent implements OnInit {
   title = 'My first AGM project';
 
-  lat = 21.027763;
-  lng = 105.834160;
-  zoom = 9;
+  lat = 20.937342;
+  lng = 105.790581;
+  // lat = 21.027763;
+  // lng = 105.834160;
+  zoom = 10;
 
   public marker:any;
+  marker1: any;
   circle:any;
+  type:any;
 
   parsedJson: any;
   postData: any;
@@ -59,14 +63,78 @@ export class AppComponent implements OnInit {
 
         // Object data
         console.log(data);
-        this.marker = data; // lấy dữ liệu hiện ra màn hình
+        this.marker1 = data; // lấy dữ liệu hiện ra màn hình, dữ liệu chưa xử lý switch case
 
-        // convert lat, lng, radius sang number
         let temp: Object[]|any
         temp = data
-        //this.marker = temp.map((location:any, index: any), thi tren 58. subcribe((data))
+        this.marker = temp.map((location:any) => {
+          var concaveType = location.concaveType;
+          var concaveCode = location.concaveCode;
+          var source = location.source;
+          var address = location.address;
+          var lat:number = +location.lat;
+          var lng:number = +location.lng;
+          var radius:number = +location.radius;
+          var areaName = location.areaName;
+          var provinceName = location.provinceName;
+          var districtName = location.districtName;
+          var villageName = location.villageName;
+          var ruralName = location.ruralName;
+          var locationName = location.locationName;
+          switch(concaveType){
+              case 0:
+                concaveType = "2G";
+                break;
+              case 1:
+                concaveType = "3G";
+                break;
+              case 2:
+                concaveType = "4G";
+                break;
+          }   
+          
+        switch(source){
+            case 0:
+              source = "Bản ghi MRR";
+              break;
+            case 1:
+              source = "Đo kiểm PAKH";
+              break;
+            case 2:
+              source = "Đo kiểm driving test";
+              break;
+            case 3:
+              source = "Mô phỏng ATOLL";
+              break;
+            case 4:
+              source = "Cung cấp từ VTT ";
+              break;
+        } 
+        return{
+            concaveCode: concaveCode,
+            concaveType: concaveType,
+            source: source,
+            address: address,
+            lat: lat,
+            lng: lng,
+            radius: radius,
+            areaName: areaName,
+            provinceName: provinceName,
+            districtName: districtName,
+            villageName: villageName,
+            ruralName: ruralName,
+            locationName: locationName
+        }
+      });
 
-        this.circle = temp.map((location:any) => {
+      console.log("Concave Type ", this.marker)
+
+
+        // convert lat, lng, radius sang number
+        let temp1: Object[]|any
+        temp1 = data
+        //this.marker = temp.map((location:any, index: any), thi tren 58. subcribe((data))
+        this.circle = temp1.map((location:any) => {
              
             //var address = location.address;
             var lat: number = +location.lat; // dùng parseFloat(location.lat) cũng được
@@ -80,7 +148,6 @@ export class AppComponent implements OnInit {
             //   radius: radius
             // })
             return{
-              //address,
               lat: lat,
               lng: lng,
               radius: radius

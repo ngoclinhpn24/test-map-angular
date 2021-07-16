@@ -1,6 +1,6 @@
 
 
-<h1 style="text-align: center;">{{title}}</h1>
+<h2 style="text-align: center;">{{title}}</h2>
 
 
 <!-- <agm-map [latitude]="lat" [longitude]="lng" (mapClick) = "onChoseLocation($event)" [zoom] ="zoom"></agm-map> -->
@@ -14,31 +14,58 @@
     <!-- <agm-marker [latitude]="lat2" [longitude]="lng2" [markerDraggable]="true"></agm-marker> -->
 
     <agm-marker *ngFor="let data of marker" [latitude]="data.lat" [longitude]="data.lng">  
-          <agm-info-window class = "infoWindow" > 
+     
+      <!-- <agm-info-window [maxWidth]="600"  class="infoWindow">   -->
+          <agm-info-window class="infoWindow"> 
+            
               <!-- {{ data.address }} -->
               <div class = "infoWindow">
 
                 <form>
-                  <label for="address">Address</label>
-                  <input type="text" class="form-control" name="address" value="{{data.address}}" readonly/>
+                  
+                  <header>{{data.provinceName}}</header>
+
+                  <!-- <div style="width: 20%; float:left"><label for="ruralName">Rural Name</label></div>
+                  <div style="width: 80%; float:right"><input type="text" class="form-control" name="ruralName" value="{{data.ruralName}}" readonly /></div> -->
+
+                  <div><label for="address">Address</label></div>
+                  <div><input type="text" class="form-control" name="address" value="{{data.address}}" readonly/></div>
                    
-                  <label for="lat">Lat</label>
-                  <input type="text" class="form-control" name="lat" value="{{data.lat}}" readonly />
+                  <div><label for="concaveCode">Concave Code</label></div>
+                  <div><input type="text" class="form-control" name="concaveCode" value="{{data.concaveCode}}" readonly/></div>
 
-                  <label for="lng">Lng</label>
-                  <input type="text"  class="form-control" name="lng" value="{{data.lng}}" readonly />
+                  <div><label for="concaveType">Concave Type</label></div>
+                  <div><input type="text" class="form-control" name="concaveType" value="{{data.concaveType}}" readonly/></div>
 
-                  <label for="radius">Radius</label>
-                  <input type="text"  class="form-control" name="radius" value="{{data.radius}}" readonly />
+                  <div><label for="lat">Lat</label></div>
+                  <div><input type="text" class="form-control" name="lat" value="{{data.lat}}" readonly /></div>
 
-                  <label for="provinceNames">Province Name</label>
-                  <input type="text"  class="form-control" name="provinceName" value="{{data.provinceName}}" readonly />
+                  <div><label for="lng">Lng</label></div>
+                  <div><input type="text" class="form-control" name="lng" value="{{data.lng}}" readonly /></div>
 
-                  <label for="districtName">District Name</label>
-                  <input type="text"  class="form-control" name="districtName" value="{{data.districtName}}" readonly />
+                  <div><label for="radius">Radius</label></div>
+                  <div><input type="text" class="form-control" name="radius" value="{{data.radius}}" readonly /></div>
 
-                  <label for="villageName">Village Name</label>
-                  <input type="text"  class="form-control" name="villageName" value="{{data.villageName}}" readonly />
+                  <div><label for="areaName">Area Name</label></div>
+                  <div><input type="text" class="form-control" name="areaName" value="{{data.areaName}}" readonly/></div>
+
+                  <div><label for="provinceNames">Province Name</label></div>
+                  <div><input type="text" class="form-control" name="provinceName" value="{{data.provinceName}}" readonly /></div>
+
+                  <div><label for="districtName">District Name</label></div>
+                  <div><input type="text" class="form-control" name="districtName" value="{{data.districtName}}" readonly /></div>
+
+                  <div><label for="villageName">Village Name</label></div>
+                  <div><input type="text" class="form-control" name="villageName" value="{{data.villageName}}" readonly /></div>
+
+                  <div><label for="ruralName">Rural Name</label></div>
+                  <div><input type="text" class="form-control" name="ruralName" value="{{data.ruralName}}" readonly /></div>
+
+                  <div><label for="locationName">Location Name</label></div>
+                  <div><input type="text" class="form-control" name="locationName" value="{{data.locationName}}" readonly /></div>
+
+                  <div><label for="source">Source</label></div>
+                  <div><input type="text" class="form-control" name="source" value="{{data.source}}" readonly /></div>
 
                 </form>
               </div>
@@ -74,23 +101,35 @@
   <table>
     <thead>
        <th>Address</th>
+       <th>Concave Code</th>
+       <th>Concave Type</th>
        <th>Lat</th>
        <th>Lng</th>
        <th>Radius</th>
+       <th>Area Name</th>
        <th>Province Name</th>
        <th>District Name</th>
        <th>Village Name</th>
+       <th>Rural Name</th>
+       <th>Location Name</th>
+       <th>Source</th>
     </thead>
 
     <tbody>
-       <tr *ngFor="let data of marker">
+       <tr *ngFor="let data of marker1">
           <td>{{data.address}}</td>
+          <td>{{data.concaveCode}}</td>
+          <td>{{data.concaveType}}</td>
           <td>{{data.lat}}</td>
           <td>{{data.lng}}</td>
           <td>{{data.radius}}</td>
+          <td>{{data.areaName}}</td>
           <td>{{data.provinceName}}</td>
           <td>{{data.districtName}}</td>
           <td>{{data.villageName}}</td>
+          <td>{{data.ruralName}}</td>
+          <td>{{data.locationName}}</td>
+          <td>{{data.source}}</td>
        </tr>
     </tbody>
  </table>
