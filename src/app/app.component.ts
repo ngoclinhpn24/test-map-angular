@@ -13,11 +13,12 @@ import { HttpClient } from '@angular/common/http';
 export class AppComponent implements OnInit {
   title = 'My first AGM project';
 
+  // Hải Dương
   lat = 20.937342;
-  lng = 105.790581;
+  lng = 106.314552;
   // lat = 21.027763;
   // lng = 105.834160;
-  zoom = 10;
+  zoom = 9;
 
   public marker:any;
   marker1: any;
