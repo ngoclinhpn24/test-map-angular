@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 
 import { AgmCoreModule } from '@agm/core';
 import {HttpClientModule} from '@angular/common/http';
-import { AgmSnazzyInfoWindowModule } from '@agm/snazzy-info-window';
+
 
 @NgModule({
   declarations: [
@@ -17,11 +17,11 @@ import { AgmSnazzyInfoWindowModule } from '@agm/snazzy-info-window';
     AppRoutingModule,
    
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyA2zmfFiqBqvwBMOqEGlEzWqmSRAPaX3kM'
+      apiKey: 'AIzaSyA2zmfFiqBqvwBMOqEGlEzWqmSRAPaX3kM',
       //apiKey: ''
+      libraries: ['places']
     }),
-    HttpClientModule,
-    AgmSnazzyInfoWindowModule
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

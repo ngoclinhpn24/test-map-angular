@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgZone, ViewChild, ElementRef } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-
+import { MapsAPILoader} from '@agm/core';
 
 @Component({
   selector: 'app-root',
@@ -11,34 +11,46 @@ import { HttpClient } from '@angular/common/http';
 
 
 export class AppComponent implements OnInit {
-  title = 'My first AGM project';
+  title = 'AGM project';
 
   // Hải Dương
-  lat = 20.937342;
-  lng = 106.314552;
+  // lat = 20.937342;
+  // lng = 106.314552;
   // lat = 21.027763;
   // lng = 105.834160;
-  zoom = 9;
+  // zoom = 10;
+  lat: string|any;
+  lng: string|any;
+  zoom: string|any;
+
+
+  
 
   public marker:any;
   marker1: any;
   circle:any;
   type:any;
 
+  public geoCoder:any;
+  address1:string|any;
+
   parsedJson: any;
   postData: any;
   stringifyJson: any;
-  
-  
 
   url = 'http://localhost:3000/data';
+
   onChoseLocation(event: any){
     console.log(event);
     // this.lat = event.coords.lat;
     // this.lng = event.coords.lng;
   }
 
-  constructor(private http: HttpClient){
+
+  @ViewChild('search')
+  public searchElementRef: ElementRef | any;
+
+  constructor(private http: HttpClient, private ngZone: NgZone, private mapsAPILoader: MapsAPILoader){
     //   this.http.post(this.url,this.postData).toPromise().then((data) => {
     //     console.log(data); 
     // });
@@ -47,11 +59,32 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
       
-      // this.http.get('/assets/api/place.json').subscribe((data) => {
-      //   this.marker = data; // hiển thị ra màn hình
-      // });
+    // load dia diem, search
+    this.mapsAPILoader.load().then(() => {
+      this.setCurrentLocation(); // dia diem hien tai cua minh
+      this.geoCoder = new google.maps.Geocoder;
+
+      let autocomplete = new google.maps.places.Autocomplete(this.searchElementRef.nativeElement);
+      autocomplete.addListener("place_changed", () => {
+        this.ngZone.run(() => {
+          // lay ket qua dia diem
+          let place: google.maps.places.PlaceResult = autocomplete.getPlace();
+
+          // xac minh ket qua
+          if(place.geometry === undefined || place.geometry === null){
+            return;
+          }
+
+          // tra ve dia chi co:lat, lng, zoom
+          this.lat = place.geometry.location.lat();
+          this.lng = place.geometry.location.lng();
+          this.zoom = 9;
+        });
+      });
+    });
 
 
+     
       // HTTP post request
       // this.http.post<any>(this.url,{address: 'Trung Quốc', lat: '35.861660', lng: '104.195396', radius: '120'}).subscribe((data) => {
       //    console.log(data); 
@@ -60,6 +93,11 @@ export class AppComponent implements OnInit {
 
 
       // HTTP get Request
+
+       // this.http.get('/assets/api/place.json').subscribe((data) => {
+      //   this.marker = data; // hiển thị ra màn hình
+      // });
+
       this.http.get(this.url).subscribe((data) => {
 
         // Object data
@@ -176,5 +214,35 @@ export class AppComponent implements OnInit {
     });
 
   }
+
+   private setCurrentLocation(){
+    if ('geolocation' in navigator) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        this.lat = position.coords.latitude;
+        this.lng = position.coords.longitude;
+        this.zoom = 10;
+        //this.getAddress(this.lat, this.lng);
+      });
+    }
+  }
+
+  
+  // getAddress(lat:any, lng:any){
+  //   this.geoCoder.geocode({ 'location': { lat: lat, lng: lng } }, (results:any, status:any) => {
+  //     console.log(results);
+  //     console.log(status);
+  //     if (status === 'OK') {
+  //       if (results[0]) {
+  //         this.zoom = 9;
+  //         this.address1 = results[0].formatted_address;
+  //       } else {
+  //         window.alert('No results found');
+  //       }
+  //     } else {
+  //       window.alert('Geocoder failed due to: ' + status);
+  //     }
+
+  //   });
+  // }
   
 }

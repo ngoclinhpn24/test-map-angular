@@ -3,7 +3,7 @@
     
 }
 agm-map{
-    height: 500px;
+    height: 450px;
 }
 
 table, th, td {
@@ -56,11 +56,11 @@ header {
  }
   
  
-form input {
+ form input {
     /* display: block;  */
     /* width: 85%; */
-    /* background: #f3f3f3; */
-    height: 21px;
+    /* background: #f3f3f3; */ 
+    height: 28px;
     font-size: small;
     margin-top: 5px;
     margin-left: 10px;
@@ -70,7 +70,7 @@ form input {
     border-radius: 3px;
     border: 1px solid #ccc;
     outline-color: #289672;
- }
+ } 
 
 
  .info{
