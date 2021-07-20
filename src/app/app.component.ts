@@ -59,7 +59,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
       
-    // load dia diem, search
+    // load dia diem, search tìm kiếm
     this.mapsAPILoader.load().then(() => {
       this.setCurrentLocation(); // dia diem hien tai cua minh
       this.geoCoder = new google.maps.Geocoder;
@@ -78,7 +78,7 @@ export class AppComponent implements OnInit {
           // tra ve dia chi co:lat, lng, zoom
           this.lat = place.geometry.location.lat();
           this.lng = place.geometry.location.lng();
-          this.zoom = 9;
+          this.zoom = 10;
         });
       });
     });
@@ -241,7 +241,6 @@ export class AppComponent implements OnInit {
   //     } else {
   //       window.alert('Geocoder failed due to: ' + status);
   //     }
-
   //   });
   // }
   

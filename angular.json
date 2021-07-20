@@ -13,6 +13,13 @@
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
+
+      "i18n": {
+        "sourceLocale":"en-US",
+        "locales": {
+          "ru": "locate/messages.ru.xlf"
+        }
+      },
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
@@ -27,12 +34,15 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css",
-              "node_modules/snazzy-info-window/dist/snazzy-info-window.css"
+              "src/styles.css"
+        
             ],
             "scripts": []
           },
           "configurations": {
+            "ru":{
+              "localize": ["ru"]
+            },
             "production": {
               "budgets": [
                 {
@@ -54,6 +64,7 @@
               ],
               "outputHashing": "all"
             },
+            
             "development": {
               "buildOptimizer": false,
               "optimization": false,
@@ -70,6 +81,9 @@
           "configurations": {
             "production": {
               "browserTarget": "test-map:build:production"
+            },
+            "ru":{
+              "browserTarget": "test-map:build:ru"
             },
             "development": {
               "browserTarget": "test-map:build:development"
