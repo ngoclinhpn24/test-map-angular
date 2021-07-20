@@ -46,7 +46,7 @@ header {
     border-radius: 10px 10px 0 0;
  }
 
- form label {
+form label {
     /* display: inline-block;  */
     margin-left: 7px;
     margin-top: 8px; 
@@ -56,7 +56,7 @@ header {
  }
   
  
- form input {
+form input {
     /* display: block;  */
     /* width: 85%; */
     /* background: #f3f3f3; */ 

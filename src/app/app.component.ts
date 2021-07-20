@@ -8,8 +8,6 @@ import { MapsAPILoader} from '@agm/core';
   styleUrls: ['./app.component.css']
 })
 
-
-
 export class AppComponent implements OnInit {
   title = 'AGM project';
 
@@ -22,9 +20,6 @@ export class AppComponent implements OnInit {
   lat: string|any;
   lng: string|any;
   zoom: string|any;
-
-
-  
 
   public marker:any;
   marker1: any;
@@ -179,13 +174,6 @@ export class AppComponent implements OnInit {
             var lat: number = +location.lat; // dùng parseFloat(location.lat) cũng được
             var lng: number = +location.lng;
             var radius: number = +location.radius;
-            
-
-            // console.log({
-            //   lat: lat,
-            //   lng: lng,
-            //   radius: radius
-            // })
             return{
               lat: lat,
               lng: lng,
@@ -193,24 +181,6 @@ export class AppComponent implements OnInit {
             }
         });
         console.log("Lat Lng Radius: number: ", this.circle)
-
-        // Convert to JSON
-
-        this.stringifyJson = JSON.stringify(data);  
-        //console.log("With Stringify: " , this.stringifyJson);  
-
-        // Parse from JSON
-
-        var parsedJson = JSON.parse(this.stringifyJson);  
-        console.log("Parse JSON: " , parsedJson);  
-
-       
-        var locat = parsedJson[0];
-        console.log("Location1: ", locat);
-        console.log("Address: ", locat.address);
-        // this.parsedJson = JSON.parse(this.stringifyJson);  
-        //  console.log("Parsed JSON :" , this.parsedJson);  
-
     });
 
   }
@@ -225,23 +195,5 @@ export class AppComponent implements OnInit {
       });
     }
   }
-
-  
-  // getAddress(lat:any, lng:any){
-  //   this.geoCoder.geocode({ 'location': { lat: lat, lng: lng } }, (results:any, status:any) => {
-  //     console.log(results);
-  //     console.log(status);
-  //     if (status === 'OK') {
-  //       if (results[0]) {
-  //         this.zoom = 9;
-  //         this.address1 = results[0].formatted_address;
-  //       } else {
-  //         window.alert('No results found');
-  //       }
-  //     } else {
-  //       window.alert('Geocoder failed due to: ' + status);
-  //     }
-  //   });
-  // }
   
 }
